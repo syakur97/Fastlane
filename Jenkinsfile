@@ -1,5 +1,3 @@
-# ! groovy
-
 pipeline {
   agent any
   stages {
@@ -23,8 +21,7 @@ pipeline {
     stage('Release to on 3rd party') {
       when {
         anyOf {
-          branch "develop";
-          branch "feature/*";
+          branch "main";
         }
       }
       steps {
