@@ -53,6 +53,7 @@ goto fail
 :findJavaFromJavaHome
 set JAVA_HOME=%JAVA_HOME:"=%
 set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+set ANDROID_HOME=%ANDROID_HOME:"=%
 
 if exist "%JAVA_EXE%" goto execute
 
