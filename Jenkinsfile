@@ -6,6 +6,7 @@ pipeline {
         echo "Setup"
         // Install bundler in order to use fastlane
         sh "sudo gem install bundler"
+        sh "220297"
         // set the local path for bundles in vendor/bundle
         sh "bundle config set --local path 'vendor/bundle'"
         // install bundles if they're not installed
