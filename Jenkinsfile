@@ -6,7 +6,6 @@ pipeline {
     //     echo "Setup"
     //     // Install bundler in order to use fastlane
     //     sh "sudo gem install bundler"
-    //     sh "220297"
     //     // set the local path for bundles in vendor/bundle
     //     sh "bundle config set --local path 'vendor/bundle'"
     //     // install bundles if they're not installed
@@ -19,18 +18,18 @@ pipeline {
         sh "fastlane beta"
       }
     }
-    stage('Release to on 3rd party') {
-      when {
-        anyOf {
-          branch "main";
-        }
-      }
-      steps {
-        echo "Releasing to 3rd party"
-        // Add your 3rd party fastlane command
-        // sh "bundle exec fastlane release_third_party"
-      }
-    }
+    // stage('Release to on 3rd party') {
+    //   when {
+    //     anyOf {
+    //       branch "main";
+    //     }
+    //   }
+    //   steps {
+    //     echo "Releasing to 3rd party"
+    //     // Add your 3rd party fastlane command
+    //     // sh "bundle exec fastlane release_third_party"
+    //   }
+    // }
     // stage('Release to Play Store ') {
     //   when {
     //     branch "master"
