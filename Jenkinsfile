@@ -15,7 +15,7 @@ pipeline {
     stage('Build') {
       steps {
         echo "Building"
-        sh "/usr/local/bin/fastlane test"
+        sh "/usr/local/bin/fastlane beta"
       }
     }
     // stage('Release to on 3rd party') {
