@@ -21,18 +21,35 @@ platform :android do
     gradle(task: "test")
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
+  desc "Increment version code"
+  lane :increment_vc do
+    increment_version_code(
+       gradle_file_path: "./app/build.gradle",
+  )
+  end
   
     # sh "your_script.sh"
     # You can also use other beta testing services here
+    desc "Build"
+    lane :build do
+      gradle(
+         task: "assemble",
+         build_type: "Release"
+       )
   end
-
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+  desc "Submit a new Beta Build to Firebase App Distribution"
+  lane :beta do
+   build
+   firebase_app_distribution(
+       app: "1:355766702325:android:dba6c0f7b0ce5c7723f5bc",
+       firebase_cli_token: "1//0gEDOAL3_MHLqCgYIARAAGBASNwF-L9IrzUUcXq8NYIDcYg-xaqi9R06miOJnolOST-CtmXF-biU4FNtX40F84lfaW4KIHkkuGiI",
+       groups: "QA-Test",
+       release_notes: "Lots of new avatars to try out!"
+   )
   end
+#   desc "Deploy a new version to the Google Play"
+#   lane :deploy do
+#     gradle(task: "clean assembleRelease")
+#     upload_to_play_store
+#   end
 end
